@@ -1,0 +1,427 @@
+/* ==========================================================================
+   Theme: Brutalist
+   Loud neo-brutalism — electric yellow canvas, thick black borders,
+   hard offset shadows and zero subtlety.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Archivo+Black&display=swap");
+
+:root {
+  --bg: #ffe600;
+  --surface: #ffffff;
+  --ink: #111111;
+  --muted: #555555;
+  --blue: #2563ff;
+  --pink: #ff5db1;
+  --green: #22c55e;
+  --shadow: 6px 6px 0 var(--ink);
+  --shadow-sm: 4px 4px 0 var(--ink);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: "Space Grotesk", "Arial Black", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+#loading-message,
+#error-message {
+  max-width: 620px;
+  margin: 5rem auto;
+  padding: 1.5rem;
+  text-align: center;
+  background: var(--surface);
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow);
+  font-weight: 700;
+}
+
+#portfolio {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.4rem 3.5rem;
+}
+
+/* ---------- hero ---------- */
+
+#hero {
+  padding: 4.5rem 0 3rem;
+}
+
+#hero h1 {
+  font-family: "Archivo Black", "Arial Black", sans-serif;
+  font-size: clamp(2.6rem, 9vw, 5rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+  display: inline-block;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.35rem 1.2rem;
+  transform: rotate(-1.5deg);
+  box-shadow: var(--shadow);
+}
+
+.subtitle {
+  margin-top: 1.3rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: inline-block;
+  background: var(--pink);
+  border: 3px solid var(--ink);
+  padding: 0.25rem 0.9rem;
+  transform: rotate(0.8deg);
+  box-shadow: var(--shadow-sm);
+}
+
+.tagline {
+  margin-top: 1.2rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  max-width: 42rem;
+}
+
+.contact-links {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.contact-link {
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--surface);
+  border: 3px solid var(--ink);
+  padding: 0.5rem 1.1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+a.contact-link:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+  background: var(--blue);
+  color: #fff;
+}
+
+.contact-link.location {
+  background: var(--bg);
+  box-shadow: none;
+}
+
+/* ---------- sections ---------- */
+
+section {
+  margin-bottom: 3.2rem;
+}
+
+section h2 {
+  font-family: "Archivo Black", "Arial Black", sans-serif;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  display: inline-block;
+  background: var(--surface);
+  border: 3px solid var(--ink);
+  padding: 0.25rem 1rem;
+  margin-bottom: 1.4rem;
+  box-shadow: var(--shadow-sm);
+  transform: rotate(-0.6deg);
+}
+
+section:nth-of-type(even) h2 {
+  background: var(--green);
+  transform: rotate(0.6deg);
+}
+
+/* ---------- cards ---------- */
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  gap: 1.3rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 3px solid var(--ink);
+  padding: 1.35rem 1.5rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--ink);
+}
+
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.8rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.card-title a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
+}
+
+.card-date {
+  margin-left: auto;
+  font-size: 0.84rem;
+  font-weight: 700;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  padding: 0.08rem 0.5rem;
+  white-space: nowrap;
+}
+
+.card-subtitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin-top: 0.3rem;
+}
+
+.card-meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 0.2rem;
+}
+
+.card-text {
+  margin-top: 0.6rem;
+  font-size: 0.97rem;
+}
+
+.card-bullets {
+  margin-top: 0.6rem;
+  padding-left: 1.25rem;
+  font-size: 0.97rem;
+}
+
+.card-bullets li {
+  margin-bottom: 0.35rem;
+}
+
+.card-bullets li::marker {
+  content: "■ ";
+  font-size: 0.75em;
+}
+
+.badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.18rem 0.6rem;
+  border: 2px solid var(--ink);
+  background: var(--pink);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.badge-full-time {
+  background: var(--green);
+}
+
+/* ---------- projects ---------- */
+
+.tag-list {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 2px solid var(--ink);
+  background: var(--bg);
+  padding: 0.16rem 0.55rem;
+}
+
+.card-links {
+  margin-top: 0.95rem;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.card-link {
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: var(--ink);
+  padding: 0.35rem 0.85rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.card-link:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+  background: var(--pink);
+  color: var(--ink);
+}
+
+/* ---------- skills ---------- */
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.skill {
+  font-size: 0.92rem;
+  font-weight: 700;
+  background: var(--surface);
+  border: 3px solid var(--ink);
+  padding: 0.4rem 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.1s, box-shadow 0.1s, background 0.1s;
+}
+
+.skill:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+  background: var(--blue);
+  color: #fff;
+}
+
+/* ---------- footer ---------- */
+
+#footer {
+  padding: 1.2rem 1.4rem;
+  border: 3px solid var(--ink);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ---------- responsive: tablet ---------- */
+
+@media (max-width: 900px) {
+  #portfolio {
+    max-width: 700px;
+  }
+
+  #hero {
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.7rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+}
+
+/* ---------- responsive: phone ---------- */
+
+@media (max-width: 600px) {
+  :root {
+    --shadow: 4px 4px 0 var(--ink);
+    --shadow-sm: 3px 3px 0 var(--ink);
+  }
+
+  #portfolio {
+    padding: 0 1rem 2.5rem;
+  }
+
+  #hero {
+    padding: 2.75rem 0 2.2rem;
+  }
+
+  #hero h1 {
+    padding: 0.3rem 0.8rem;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+  }
+
+  .contact-links {
+    gap: 0.6rem;
+  }
+
+  .contact-link {
+    font-size: 0.82rem;
+    padding: 0.45rem 0.9rem;
+    border-width: 2px;
+  }
+
+  section h2 {
+    font-size: 1.25rem;
+    padding: 0.2rem 0.8rem;
+  }
+
+  .card-list,
+  .card-grid {
+    gap: 1.1rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.1rem 1.2rem;
+    border-width: 2px;
+  }
+
+  .card:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+  }
+
+  .card-date {
+    margin-left: 0;
+  }
+
+  .skill {
+    font-size: 0.84rem;
+    padding: 0.35rem 0.8rem;
+    border-width: 2px;
+  }
+}
+

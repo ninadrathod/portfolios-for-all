@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>portfolios-for-all — a portfolio for everyone</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Pacifico&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden; /* everything stays in a single frame on desktop */
+    }
+
+    body {
+      font-family: "Sora", "Segoe UI", sans-serif;
+      background: #070b18;
+      color: #eef2ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+
+    /* ---- animated aurora blobs ---- */
+    .blob {
+      position: fixed;
+      z-index: 0;
+      width: 55vmax;
+      height: 55vmax;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.32;
+      animation: drift 22s ease-in-out infinite alternate;
+    }
+
+    .blob.teal {
+      top: -22vmax;
+      left: -14vmax;
+      background: radial-gradient(circle, #5eead4, transparent 65%);
+    }
+
+    .blob.violet {
+      bottom: -22vmax;
+      right: -14vmax;
+      background: radial-gradient(circle, #a78bfa, transparent 65%);
+      animation-delay: -11s;
+    }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(7vmax, 5vmax) scale(1.25); }
+    }
+
+    /* ---- main frame ---- */
+    .frame {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      width: calc(100% - 2.5rem);
+      text-align: center;
+      padding: clamp(1.4rem, 4vh, 3rem) clamp(1.2rem, 4vw, 3rem);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #9aa5c4;
+    }
+
+    h1 {
+      margin-top: 0.5rem;
+      font-size: clamp(1.9rem, 5.5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg, #5eead4, #a78bfa, #f472b6, #5eead4);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 7s linear infinite;
+    }
+
+    @keyframes shimmer {
+      to { background-position: 300% center; }
+    }
+
+    .typed-line {
+      margin-top: 0.5rem;
+      font-size: clamp(0.95rem, 2.4vw, 1.15rem);
+      font-weight: 600;
+      min-height: 1.6em;
+    }
+
+    .typed-line .typed {
+      color: #5eead4;
+    }
+
+    .typed-line .cursor {
+      display: inline-block;
+      width: 2px;
+      background: #5eead4;
+      animation: blink 0.9s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .pitch {
+      margin: 0.9rem auto 0;
+      max-width: 560px;
+      font-size: clamp(0.85rem, 2vw, 0.98rem);
+      line-height: 1.65;
+      color: #c6cde4;
+    }
+
+    .pitch strong {
+      color: #eef2ff;
+    }
+
+    /* ---- how it works ---- */
+    .steps {
+      margin-top: 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: clamp(0.74rem, 1.8vw, 0.86rem);
+      color: #c6cde4;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      width: clamp(96px, 15vw, 130px);
+    }
+
+    .step .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2em;
+      height: 2em;
+      border-radius: 50%;
+      font-weight: 800;
+      color: #070b18;
+      background: linear-gradient(135deg, #5eead4, #a78bfa);
+      box-shadow: 0 4px 16px rgba(94, 234, 212, 0.3);
+    }
+
+    .step .label {
+      font-weight: 600;
+      color: #eef2ff;
+      line-height: 1.35;
+    }
+
+    /* connector line between steps */
+    .connector {
+      flex: 0 0 clamp(14px, 3vw, 34px);
+      height: 1px;
+      margin-top: -1.3em;
+      background: linear-gradient(90deg, rgba(94, 234, 212, 0.5), rgba(167, 139, 250, 0.5));
+    }
+
+    /* ---- theme swatches ---- */
+    .themes {
+      margin-top: 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.55rem;
+    }
+
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.4rem 0.85rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.05);
+      cursor: default;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .swatch:hover {
+      transform: translateY(-4px) rotate(-1.5deg);
+      border-color: currentColor;
+    }
+
+    .swatch .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 10px currentColor;
+    }
+
+    .aurora    { color: #5eead4; }
+    .cyberpunk { color: #ff2ec4; }
+    .bubblegum { color: #ff9ccd; }
+    .brutalist { color: #ffe600; }
+    .velvet    { color: #d4af37; }
+
+    /* ---- CTA ---- */
+    .cta {
+      margin-top: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: clamp(0.9rem, 2.2vw, 1.02rem);
+      font-weight: 800;
+      text-decoration: none;
+      color: #070b18;
+      background: linear-gradient(90deg, #5eead4, #a78bfa);
+      padding: 0.8rem 1.7rem;
+      border-radius: 999px;
+      box-shadow: 0 10px 32px rgba(94, 234, 212, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 16px 42px rgba(167, 139, 250, 0.45);
+    }
+
+    .cta svg {
+      width: 1.25em;
+      height: 1.25em;
+      fill: currentColor;
+    }
+
+    .footnote {
+      margin-top: 1.1rem;
+      font-size: 0.72rem;
+      color: #9aa5c4;
+      letter-spacing: 0.04em;
+    }
+
+    .cta-lead {
+      margin-top: 1.6rem;
+      font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+      font-weight: 700;
+      color: #eef2ff;
+    }
+
+    .made-with {
+      margin-top: 1.5rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-family: "Pacifico", "Brush Script MT", cursive;
+      font-size: clamp(1rem, 2.6vw, 1.25rem);
+      color: #c6cde4;
+      letter-spacing: 0.02em;
+    }
+
+    .made-with .heart {
+      display: inline-block;
+      color: #f472b6;
+      animation: heartbeat 1.6s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      12% { transform: scale(1.25); }
+      24% { transform: scale(1); }
+      36% { transform: scale(1.18); }
+      48% { transform: scale(1); }
+    }
+
+    .made-with a {
+      color: #5eead4;
+      text-decoration: none;
+      border-bottom: 2px dotted rgba(94, 234, 212, 0.6);
+      transition: text-shadow 0.2s, border-bottom-color 0.2s;
+    }
+
+    .made-with a:hover {
+      border-bottom-color: #5eead4;
+      text-shadow: 0 0 18px rgba(94, 234, 212, 0.6);
+    }
+
+    /* ---- responsive: tablet ---- */
+    @media (max-width: 900px) {
+      .frame {
+        max-width: 620px;
+      }
+
+      .steps {
+        gap: 0.4rem;
+      }
+
+      .step {
+        width: clamp(88px, 18vw, 120px);
+      }
+    }
+
+    /* ---- responsive: phone ---- */
+    @media (max-width: 600px) {
+      /* allow scrolling if the card is taller than a small screen */
+      html,
+      body {
+        overflow: auto;
+      }
+
+      body {
+        align-items: flex-start;
+        padding: 1.25rem 0;
+      }
+
+      .frame {
+        width: calc(100% - 1.6rem);
+        padding: 1.5rem 1.1rem 1.7rem;
+        border-radius: 18px;
+      }
+
+      .eyebrow {
+        font-size: 0.62rem;
+        letter-spacing: 0.2em;
+      }
+
+      .pitch {
+        font-size: 0.84rem;
+        line-height: 1.55;
+      }
+
+      /* steps become a tidy 2x2 grid, no connector lines */
+      .steps {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.9rem 0.5rem;
+        justify-items: center;
+        margin-top: 1.2rem;
+      }
+
+      .connector {
+        display: none;
+      }
+
+      .step {
+        width: 100%;
+        max-width: 150px;
+      }
+
+      .step .label {
+        font-size: 0.8rem;
+      }
+
+      .themes {
+        gap: 0.4rem;
+      }
+
+      .swatch {
+        font-size: 0.72rem;
+        padding: 0.32rem 0.65rem;
+      }
+
+      .cta {
+        padding: 0.7rem 1.4rem;
+      }
+
+      .made-with {
+        font-size: 0.98rem;
+      }
+
+      /* lighter blobs for small screens */
+      .blob {
+        filter: blur(60px);
+        opacity: 0.28;
+      }
+    }
+
+    /* ---- short screens (e.g. landscape phones): trim & allow scroll ---- */
+    @media (max-height: 640px) {
+      html,
+      body {
+        overflow: auto;
+      }
+
+      body {
+        align-items: flex-start;
+      }
+
+      .pitch {
+        display: none;
+      }
+
+      .frame {
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob teal"></div>
+  <div class="blob violet"></div>
+
+  <main class="frame">
+    <p class="eyebrow">Free · Open Source · No Frameworks</p>
+    <h1>portfolios-for-all</h1>
+
+    <p class="typed-line">A ready-made portfolio website for&nbsp;<span class="typed" id="typed"></span><span class="cursor">&nbsp;</span></p>
+
+    <p class="pitch">
+      A pure <strong>HTML + CSS + JavaScript</strong> portfolio template. Your entire
+      website is driven by <strong>two JSON files</strong> — education, work experience,
+      projects, skills, certificates and more. Empty sections hide themselves
+      automatically, and it deploys straight to <strong>GitHub Pages</strong>.
+    </p>
+
+    <div class="steps">
+      <span class="step"><span class="num">1</span><span class="label">Fork the repo</span></span>
+      <span class="connector"></span>
+      <span class="step"><span class="num">2</span><span class="label">Edit two JSON files</span></span>
+      <span class="connector"></span>
+      <span class="step"><span class="num">3</span><span class="label">Pick a theme</span></span>
+      <span class="connector"></span>
+      <span class="step"><span class="num">4</span><span class="label">Publish. Done!</span></span>
+    </div>
+
+    <div class="themes">
+      <span class="swatch aurora"><span class="dot"></span>Aurora</span>
+      <span class="swatch cyberpunk"><span class="dot"></span>Cyberpunk</span>
+      <span class="swatch bubblegum"><span class="dot"></span>Bubblegum</span>
+      <span class="swatch brutalist"><span class="dot"></span>Brutalist</span>
+      <span class="swatch velvet"><span class="dot"></span>Velvet</span>
+    </div>
+
+    <p class="cta-lead">Ready to build yours? Grab the template from the repo:</p>
+
+    <a class="cta" href="https://github.com/ninadrathod/portfolios-for-all" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.68 7.68 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      GitHub
+    </a>
+
+    <p class="footnote">Star it, fork it, make it yours — no build tools, no fees, no excuses.</p>
+
+    <p class="made-with">Made with <span class="heart">&#10084;</span> by <a href="https://ninad.meverse.in" target="_blank" rel="noopener noreferrer">Ninad</a></p>
+  </main>
+
+  <script>
+    // Rotating typewriter effect for the audience line
+    const words = ["students.", "developers.", "designers.", "job seekers.", "everyone."];
+    const typedEl = document.getElementById("typed");
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function tick() {
+      const word = words[wordIndex];
+      charIndex += deleting ? -1 : 1;
+      typedEl.textContent = word.slice(0, charIndex);
+
+      let delay = deleting ? 45 : 95;
+      if (!deleting && charIndex === word.length) {
+        delay = 1500; // pause on the full word
+        deleting = true;
+      } else if (deleting && charIndex === 0) {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        delay = 350;
+      }
+      setTimeout(tick, delay);
+    }
+    tick();
+
+    // Blobs gently follow the pointer for a bit of life
+    const teal = document.querySelector(".blob.teal");
+    const violet = document.querySelector(".blob.violet");
+    document.addEventListener("pointermove", (e) => {
+      const x = e.clientX / window.innerWidth - 0.5;
+      const y = e.clientY / window.innerHeight - 0.5;
+      teal.style.translate = `${x * 40}px ${y * 40}px`;
+      violet.style.translate = `${x * -40}px ${y * -40}px`;
+    });
+  </script>
+</body>
+</html>

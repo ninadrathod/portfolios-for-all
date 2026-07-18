@@ -1,0 +1,430 @@
+/* ==========================================================================
+   Theme: Cyberpunk
+   Neon-noir city vibes — hot pink & electric cyan glow on near-black,
+   with a perspective grid floor and glitchy energy.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap");
+
+:root {
+  --bg: #0a0014;
+  --surface: #140a24;
+  --text: #e8e6f5;
+  --muted: #8d84ad;
+  --cyan: #00f0ff;
+  --pink: #ff2ec4;
+  --yellow: #ffe600;
+  --border: #33224d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: "Rajdhani", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+/* neon grid floor */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(0, 240, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 46, 196, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, transparent 5%, black 60%);
+}
+
+#loading-message,
+#error-message {
+  max-width: 640px;
+  margin: 5rem auto;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-family: "Share Tech Mono", monospace;
+}
+
+#portfolio {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.4rem 3.5rem;
+}
+
+/* ---------- hero ---------- */
+
+#hero {
+  text-align: center;
+  padding: 5.5rem 1rem 3.5rem;
+}
+
+#hero h1 {
+  font-size: clamp(2.6rem, 8vw, 4.4rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cyan);
+  text-shadow:
+    0 0 8px rgba(0, 240, 255, 0.9),
+    0 0 32px rgba(0, 240, 255, 0.45),
+    3px 3px 0 var(--pink);
+  animation: flicker 5s linear infinite;
+}
+
+@keyframes flicker {
+  0%, 91%, 95%, 100% {
+    opacity: 1;
+  }
+  92%, 94% {
+    opacity: 0.55;
+  }
+}
+
+.subtitle {
+  margin-top: 0.7rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--pink);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.tagline {
+  margin-top: 0.9rem;
+  color: var(--muted);
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.95rem;
+}
+
+.contact-links {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.contact-link {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+  padding: 0.45rem 1.1rem;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+a.contact-link:hover {
+  background: var(--cyan);
+  color: var(--bg);
+  box-shadow: 0 0 22px rgba(0, 240, 255, 0.7);
+}
+
+.contact-link.location {
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+/* ---------- sections ---------- */
+
+section {
+  margin-bottom: 3.2rem;
+}
+
+section h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--pink);
+  text-shadow: 0 0 14px rgba(255, 46, 196, 0.55);
+  margin-bottom: 1.25rem;
+}
+
+section h2::before {
+  content: "// ";
+  color: var(--cyan);
+  text-shadow: 0 0 14px rgba(0, 240, 255, 0.55);
+}
+
+/* ---------- cards ---------- */
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--cyan);
+  padding: 1.3rem 1.45rem;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  border-left-color: var(--pink);
+  box-shadow: 0 0 26px rgba(255, 46, 196, 0.22);
+  transform: translateX(4px);
+}
+
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.8rem;
+}
+
+.card-title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card-title a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
+}
+
+.card-date {
+  margin-left: auto;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--yellow);
+  white-space: nowrap;
+}
+
+.card-subtitle {
+  color: var(--pink);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.card-meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.card-text {
+  margin-top: 0.55rem;
+  font-size: 0.98rem;
+}
+
+.card-bullets {
+  margin-top: 0.55rem;
+  padding-left: 1.2rem;
+  font-size: 0.98rem;
+}
+
+.card-bullets li {
+  margin-bottom: 0.3rem;
+}
+
+.card-bullets li::marker {
+  content: "▸ ";
+  color: var(--cyan);
+}
+
+.badge {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding: 0.16rem 0.6rem;
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+}
+
+.badge-full-time {
+  background: rgba(255, 230, 0, 0.1);
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+/* ---------- projects ---------- */
+
+.tag-list {
+  margin-top: 0.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.74rem;
+  color: var(--yellow);
+  border: 1px dashed var(--border);
+  padding: 0.18rem 0.55rem;
+}
+
+.card-links {
+  margin-top: 0.85rem;
+  display: flex;
+  gap: 1.1rem;
+}
+
+.card-link {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  color: var(--pink);
+  text-decoration: none;
+}
+
+.card-link::before {
+  content: "> ";
+}
+
+.card-link:hover {
+  text-shadow: 0 0 12px rgba(255, 46, 196, 0.8);
+}
+
+/* ---------- skills ---------- */
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.skill {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.84rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.4rem 0.9rem;
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.skill:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+}
+
+/* ---------- footer ---------- */
+
+#footer {
+  text-align: center;
+  padding-top: 2.2rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.82rem;
+}
+
+/* ---------- responsive: tablet ---------- */
+
+@media (max-width: 900px) {
+  #portfolio {
+    max-width: 700px;
+  }
+
+  #hero {
+    padding: 4rem 1rem 2.75rem;
+  }
+
+  section {
+    margin-bottom: 2.6rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+}
+
+/* ---------- responsive: phone ---------- */
+
+@media (max-width: 600px) {
+  #portfolio {
+    padding: 0 1rem 2.5rem;
+  }
+
+  #hero {
+    padding: 3rem 0.5rem 2.25rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+  }
+
+  .tagline {
+    font-size: 0.86rem;
+  }
+
+  .contact-link {
+    font-size: 0.78rem;
+    padding: 0.4rem 0.85rem;
+  }
+
+  section h2 {
+    font-size: 1.22rem;
+    letter-spacing: 0.09em;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.1rem 1.15rem;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .card-title {
+    font-size: 1.05rem;
+  }
+
+  .card-date {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .skill {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  /* tighter grid floor on small screens */
+  body::before {
+    background-size: 30px 30px;
+  }
+}
+

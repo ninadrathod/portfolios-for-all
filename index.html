@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+
+  <!-- ============================================================
+       THEME SELECTION
+       Pick ONE stylesheet from the styling/ directory by keeping
+       exactly one <link> tag uncommented below.
+
+       Available themes:
+         styling/aurora.css     - northern lights: drifting gradient blobs & glass cards
+         styling/cyberpunk.css  - neon-noir: pink/cyan glow on a dark grid
+         styling/bubblegum.css  - candy pastels: playful, squishy, rounded
+         styling/brutalist.css  - neo-brutalism: electric yellow, thick borders, hard shadows
+         styling/velvet.css     - old-money luxe: emerald, charcoal & gold serif
+       ============================================================ -->
+  <link rel="stylesheet" href="styling/aurora.css" />
+  <!-- <link rel="stylesheet" href="styling/cyberpunk.css" /> -->
+  <!-- <link rel="stylesheet" href="styling/bubblegum.css" /> -->
+  <!-- <link rel="stylesheet" href="styling/brutalist.css" /> -->
+  <!-- <link rel="stylesheet" href="styling/velvet.css" /> -->
+</head>
+<body>
+  <div id="loading-message">Loading portfolio…</div>
+  <div id="error-message" hidden>
+    Could not load portfolio data. If you opened this file directly,
+    please serve it with a local server instead (see README.md).
+  </div>
+
+  <!-- All sections are populated by script.js from data.json and
+       metadata.json. Sections with no data are hidden automatically. -->
+  <div id="portfolio" hidden>
+    <header id="hero">
+      <h1 id="name"></h1>
+      <p id="title" class="subtitle"></p>
+      <p id="tagline" class="tagline"></p>
+      <nav id="contact-links" class="contact-links"></nav>
+    </header>
+
+    <main>
+      <section id="about-section" hidden>
+        <h2>About Me</h2>
+        <p id="about"></p>
+      </section>
+
+      <section id="education-section" hidden>
+        <h2>Education</h2>
+        <div id="education-list" class="card-list"></div>
+      </section>
+
+      <section id="work-section" hidden>
+        <h2>Work Experience</h2>
+        <div id="work-list" class="card-list"></div>
+      </section>
+
+      <section id="projects-section" hidden>
+        <h2>Projects</h2>
+        <div id="projects-list" class="card-grid"></div>
+      </section>
+
+      <section id="skills-section" hidden>
+        <h2>Skills</h2>
+        <ul id="skills-list" class="skills-list"></ul>
+      </section>
+
+      <section id="certificates-section" hidden>
+        <h2>Certificates</h2>
+        <div id="certificates-list" class="card-list"></div>
+      </section>
+
+      <section id="por-section" hidden>
+        <h2>Positions of Responsibility</h2>
+        <div id="por-list" class="card-list"></div>
+      </section>
+
+      <section id="extracurricular-section" hidden>
+        <h2>Extracurricular Activities</h2>
+        <div id="extracurricular-list" class="card-list"></div>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <p id="footer-text"></p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+{
+  "education": [
+    {
+      "institution": "Aurora Institute of Technology",
+      "degree": "B.Sc. in Software Engineering",
+      "startYear": "2022",
+      "endYear": "2026",
+      "score": "GPA: 3.8 / 4.0",
+      "details": "Coursework: Algorithms, Distributed Systems, Human-Computer Interaction, Computer Graphics, Machine Learning."
+    },
+    {
+      "institution": "Crescent Valley High School",
+      "degree": "High School Diploma, STEM Track",
+      "startYear": "2018",
+      "endYear": "2022",
+      "score": "Valedictorian",
+      "details": "Founded the school's first coding club and built the student event portal."
+    }
+  ],
+  "workExperience": [
+    {
+      "company": "PixelForge Studios",
+      "role": "Software Engineering Intern",
+      "type": "internship",
+      "startDate": "May 2025",
+      "endDate": "Aug 2025",
+      "location": "Nebula City (Hybrid)",
+      "description": [
+        "Shipped a real-time collaboration feature for the studio's design tool, used by 12k designers weekly.",
+        "Cut initial canvas load time by 40% through asset streaming and smarter caching.",
+        "Presented an internal talk on WebSocket scaling that became onboarding material."
+      ]
+    },
+    {
+      "company": "CloudNest Technologies",
+      "role": "Junior Developer (Part-time)",
+      "type": "full-time",
+      "startDate": "Sep 2024",
+      "endDate": "Apr 2025",
+      "location": "Remote",
+      "description": [
+        "Maintained the customer notification service handling 2M+ emails and pushes per month.",
+        "Introduced contract tests between microservices, catching 15+ integration bugs before release."
+      ]
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Certified Cloud Architect - Level II",
+      "issuer": "SkyForge Academy",
+      "date": "Feb 2025",
+      "url": "#"
+    },
+    {
+      "name": "Advanced Frontend Engineering",
+      "issuer": "Codewave Institute",
+      "date": "Oct 2024",
+      "url": "#"
+    },
+    {
+      "name": "Data Structures & Algorithms Mastery",
+      "issuer": "Bytecraft Learning",
+      "date": "Jun 2024",
+      "url": ""
+    }
+  ],
+  "extracurricular": [
+    {
+      "activity": "Competitive Robotics",
+      "organization": "Aurora Tech Robotics League",
+      "duration": "2023 - Present",
+      "description": "Programmed the vision system for a line-following robot that took silver at the regional championship."
+    },
+    {
+      "activity": "Game Jams",
+      "organization": "Indie Dev Collective",
+      "duration": "2022 - Present",
+      "description": "Built 6 tiny games in 48-hour jams; 'Moth to a Flame' was featured on the collective's front page."
+    },
+    {
+      "activity": "Astronomy Society",
+      "organization": "Nebula City Stargazers",
+      "duration": "2023 - 2025",
+      "description": "Organized monthly public telescope nights and wrote the society's sky-event newsletter."
+    }
+  ],
+  "positionsOfResponsibility": [
+    {
+      "position": "President",
+      "organization": "Design & Code Society, Aurora Institute of Technology",
+      "duration": "Apr 2024 - Mar 2025",
+      "description": "Led a 40-member society, ran the annual 'Hack the Aurora' hackathon with 350+ participants, and grew workshop attendance threefold."
+    },
+    {
+      "position": "Teaching Assistant",
+      "organization": "Intro to Web Development (CS 210)",
+      "duration": "Sep 2024 - Dec 2024",
+      "description": "Mentored 60 students through weekly labs and graded projects with detailed, kind feedback."
+    }
+  ],
+  "projects": [
+    {
+      "name": "MoodMuse",
+      "description": "A journaling web app that turns your daily mood entries into generative art and gentle weekly insights. 1.2k registered users.",
+      "technologies": [
+        "JavaScript",
+        "Canvas API",
+        "Node.js",
+        "PostgreSQL"
+      ],
+      "link": "#",
+      "demo": "#"
+    },
+    {
+      "name": "OrbitDesk",
+      "description": "A keyboard-first task manager for people who hate task managers. Offline-first with seamless sync and a command palette.",
+      "technologies": [
+        "TypeScript",
+        "IndexedDB",
+        "Service Workers"
+      ],
+      "link": "#",
+      "demo": ""
+    },
+    {
+      "name": "SnackTrack",
+      "description": "Campus food-truck tracker with live locations, menus and crowd levels. Won 'Best Campus Hack' at Hack the Aurora 2024.",
+      "technologies": [
+        "React",
+        "Leaflet",
+        "Firebase"
+      ],
+      "link": "#",
+      "demo": "#"
+    }
+  ],
+  "skills": [
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "HTML & CSS",
+    "React",
+    "Node.js",
+    "Express",
+    "PostgreSQL",
+    "MongoDB",
+    "Git & GitHub",
+    "Docker",
+    "Figma",
+    "WebSockets",
+    "Accessibility (a11y)"
+  ]
+}

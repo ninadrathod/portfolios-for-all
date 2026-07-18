@@ -1,0 +1,429 @@
+/* ==========================================================================
+   Theme: Velvet
+   Old-money luxury — deep emerald and charcoal, gilded gold accents,
+   and grand editorial serif type.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Jost:wght@300;400;500&display=swap");
+
+:root {
+  --bg: #0f1512;
+  --surface: #17201b;
+  --text: #ece7dc;
+  --muted: #9ba394;
+  --gold: #d4af37;
+  --gold-soft: rgba(212, 175, 55, 0.35);
+  --emerald: #2e6e54;
+  --border: #2a352e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: "Jost", "Segoe UI", sans-serif;
+  font-weight: 300;
+  background:
+    radial-gradient(900px 500px at 50% -10%, rgba(46, 110, 84, 0.28), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.75;
+}
+
+#loading-message,
+#error-message {
+  max-width: 640px;
+  margin: 5rem auto;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+}
+
+#portfolio {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.4rem 3.5rem;
+}
+
+/* ---------- hero ---------- */
+
+#hero {
+  text-align: center;
+  padding: 5.5rem 1rem 3.5rem;
+  position: relative;
+}
+
+/* gold flourish under the hero */
+#hero::after {
+  content: "❦";
+  display: block;
+  margin-top: 2.2rem;
+  color: var(--gold);
+  font-size: 1.4rem;
+  letter-spacing: 1em;
+}
+
+#hero h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.6rem, 8vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--text);
+}
+
+#hero h1::before,
+#hero h1::after {
+  content: " — ";
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.subtitle {
+  margin-top: 0.8rem;
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--gold);
+}
+
+.tagline {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+}
+
+.contact-links {
+  margin-top: 1.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.contact-link {
+  font-size: 0.82rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--gold-soft);
+  padding: 0.5rem 1.25rem;
+  transition: border-color 0.25s, color 0.25s, background 0.25s;
+}
+
+a.contact-link:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(212, 175, 55, 0.06);
+}
+
+.contact-link.location {
+  border-style: none;
+  color: var(--muted);
+}
+
+/* ---------- sections ---------- */
+
+section {
+  margin-bottom: 3.4rem;
+}
+
+section h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+section h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-soft), transparent);
+}
+
+/* ---------- cards ---------- */
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  gap: 1.1rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--gold-soft);
+  padding: 1.45rem 1.6rem;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+.card:hover {
+  border-top-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.8rem;
+}
+
+.card-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.22rem;
+  font-weight: 500;
+}
+
+.card-title a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-soft);
+}
+
+.card-title a:hover {
+  border-bottom-color: var(--gold);
+}
+
+.card-date {
+  margin-left: auto;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.card-subtitle {
+  color: var(--gold);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  margin-top: 0.25rem;
+}
+
+.card-meta {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+  font-style: italic;
+}
+
+.card-text {
+  margin-top: 0.6rem;
+  font-size: 0.96rem;
+}
+
+.card-bullets {
+  margin-top: 0.6rem;
+  padding-left: 1.2rem;
+  font-size: 0.96rem;
+}
+
+.card-bullets li {
+  margin-bottom: 0.35rem;
+}
+
+.card-bullets li::marker {
+  content: "◆ ";
+  color: var(--gold);
+  font-size: 0.7em;
+}
+
+.badge {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 0.22rem 0.7rem;
+  border: 1px solid var(--gold-soft);
+  color: var(--gold);
+}
+
+.badge-full-time {
+  background: var(--emerald);
+  border-color: var(--emerald);
+  color: var(--text);
+}
+
+/* ---------- projects ---------- */
+
+.tag-list {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+}
+
+.tag {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.tag::before {
+  content: "· ";
+  color: var(--gold);
+}
+
+.card-links {
+  margin-top: 0.9rem;
+  display: flex;
+  gap: 1.4rem;
+}
+
+.card-link {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-soft);
+  padding-bottom: 1px;
+}
+
+.card-link:hover {
+  border-bottom-color: var(--gold);
+}
+
+/* ---------- skills ---------- */
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.skill {
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.45rem 1.1rem;
+  transition: border-color 0.25s, color 0.25s;
+}
+
+.skill:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ---------- footer ---------- */
+
+#footer {
+  text-align: center;
+  padding-top: 2.4rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- responsive: tablet ---------- */
+
+@media (max-width: 900px) {
+  #portfolio {
+    max-width: 680px;
+  }
+
+  #hero {
+    padding: 4rem 1rem 2.75rem;
+  }
+
+  section {
+    margin-bottom: 2.8rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+}
+
+/* ---------- responsive: phone ---------- */
+
+@media (max-width: 600px) {
+  body {
+    line-height: 1.65;
+  }
+
+  #portfolio {
+    padding: 0 1rem 2.5rem;
+  }
+
+  #hero {
+    padding: 3rem 0.5rem 2.25rem;
+  }
+
+  #hero::after {
+    margin-top: 1.6rem;
+    letter-spacing: 0.7em;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .tagline {
+    font-size: 0.92rem;
+  }
+
+  .contact-link {
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    padding: 0.45rem 1rem;
+  }
+
+  section h2 {
+    font-size: 1.4rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.15rem 1.25rem;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-date {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .skill {
+    font-size: 0.82rem;
+    padding: 0.4rem 0.9rem;
+  }
+}
+

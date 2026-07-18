@@ -1,0 +1,439 @@
+/* ==========================================================================
+   Theme: Bubblegum
+   Sweet & playful — pastel candy colors, squishy rounded cards,
+   and pills in rotating flavours.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;800&display=swap");
+
+:root {
+  --bg: #fff4fa;
+  --surface: #ffffff;
+  --text: #4a3b52;
+  --muted: #9d8aa8;
+  --pink: #ff6fb5;
+  --purple: #a06ee8;
+  --mint: #3ecfb2;
+  --peach: #ffb26b;
+  --border: #ffd9ec;
+  --shadow: 0 8px 22px rgba(255, 111, 181, 0.16);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: "Baloo 2", "Comic Sans MS", cursive, sans-serif;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(160, 110, 232, 0.1) 0 140px, transparent 140px),
+    radial-gradient(circle at 88% 30%, rgba(62, 207, 178, 0.12) 0 110px, transparent 110px),
+    radial-gradient(circle at 22% 85%, rgba(255, 178, 107, 0.14) 0 130px, transparent 130px),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+#loading-message,
+#error-message {
+  max-width: 640px;
+  margin: 5rem auto;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+#portfolio {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.4rem 3.5rem;
+}
+
+/* ---------- hero ---------- */
+
+#hero {
+  text-align: center;
+  padding: 3.5rem 1.5rem 3rem;
+  margin: 1.6rem 0 2.8rem;
+  background: linear-gradient(130deg, var(--pink), var(--purple));
+  border-radius: 36px;
+  color: #fff;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* candy sprinkle dots */
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.25) 3px, transparent 3px);
+  background-size: 34px 34px;
+  pointer-events: none;
+}
+
+#hero h1 {
+  position: relative;
+  font-size: clamp(2.4rem, 7vw, 3.6rem);
+  font-weight: 800;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.14);
+}
+
+.subtitle {
+  position: relative;
+  margin-top: 0.4rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.tagline {
+  position: relative;
+  margin-top: 0.8rem;
+  font-size: 1.02rem;
+  opacity: 0.9;
+}
+
+.contact-links {
+  position: relative;
+  margin-top: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.contact-link {
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--purple);
+  background: #fff;
+  padding: 0.5rem 1.15rem;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+a.contact-link:hover {
+  transform: translateY(-3px) rotate(-1.5deg);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12);
+}
+
+.contact-link.location {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  box-shadow: none;
+}
+
+/* ---------- sections ---------- */
+
+section {
+  margin-bottom: 3rem;
+}
+
+section h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--pink);
+  margin-bottom: 1.2rem;
+  display: inline-block;
+  transform: rotate(-1deg);
+  background: #fff;
+  padding: 0.2rem 1rem;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+section:nth-of-type(even) h2 {
+  color: var(--purple);
+  transform: rotate(1deg);
+}
+
+/* ---------- cards ---------- */
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.1rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  padding: 1.35rem 1.5rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px) rotate(-0.5deg);
+}
+
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.8rem;
+}
+
+.card-title {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--purple);
+}
+
+.card-title a {
+  color: var(--pink);
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  text-decoration: underline wavy;
+  text-underline-offset: 4px;
+}
+
+.card-date {
+  margin-left: auto;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.card-subtitle {
+  color: var(--mint);
+  font-size: 0.98rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.card-meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.card-text {
+  margin-top: 0.55rem;
+  font-size: 0.96rem;
+}
+
+.card-bullets {
+  margin-top: 0.55rem;
+  padding-left: 1.25rem;
+  font-size: 0.96rem;
+}
+
+.card-bullets li {
+  margin-bottom: 0.3rem;
+}
+
+.card-bullets li::marker {
+  content: "🍬 ";
+  font-size: 0.8em;
+}
+
+.badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.22rem 0.7rem;
+  border-radius: 999px;
+  background: var(--mint);
+  color: #fff;
+}
+
+.badge-full-time {
+  background: var(--peach);
+}
+
+/* ---------- projects ---------- */
+
+.tag-list {
+  margin-top: 0.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.22rem 0.7rem;
+  border-radius: 999px;
+  background: #ffe3f1;
+  color: var(--pink);
+}
+
+.tag:nth-child(3n + 2) {
+  background: #ede3ff;
+  color: var(--purple);
+}
+
+.tag:nth-child(3n) {
+  background: #dcf7f1;
+  color: #1d9c82;
+}
+
+.card-links {
+  margin-top: 0.85rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.card-link {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--pink);
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline wavy;
+  text-underline-offset: 4px;
+}
+
+/* ---------- skills ---------- */
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.skill {
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  padding: 0.45rem 1.05rem;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.skill:nth-child(4n + 1):hover {
+  border-color: var(--pink);
+}
+
+.skill:nth-child(4n + 2):hover {
+  border-color: var(--purple);
+}
+
+.skill:nth-child(4n + 3):hover {
+  border-color: var(--mint);
+}
+
+.skill:nth-child(4n):hover {
+  border-color: var(--peach);
+}
+
+.skill:hover {
+  transform: translateY(-4px) rotate(2deg);
+}
+
+/* ---------- footer ---------- */
+
+#footer {
+  text-align: center;
+  padding-top: 2.2rem;
+  border-top: 2px dashed var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- responsive: tablet ---------- */
+
+@media (max-width: 900px) {
+  #portfolio {
+    max-width: 700px;
+  }
+
+  #hero {
+    padding: 3rem 1.25rem 2.5rem;
+    border-radius: 28px;
+  }
+
+  section {
+    margin-bottom: 2.6rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+}
+
+/* ---------- responsive: phone ---------- */
+
+@media (max-width: 600px) {
+  #portfolio {
+    padding: 0 1rem 2.5rem;
+  }
+
+  #hero {
+    padding: 2.5rem 1rem 2.2rem;
+    margin: 1rem 0 2.2rem;
+    border-radius: 22px;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+  }
+
+  .contact-link {
+    font-size: 0.84rem;
+    padding: 0.45rem 1rem;
+  }
+
+  section h2 {
+    font-size: 1.3rem;
+    padding: 0.18rem 0.85rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.1rem 1.2rem;
+    border-radius: 18px;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .card-date {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .skill {
+    font-size: 0.86rem;
+    padding: 0.4rem 0.9rem;
+  }
+}
+
