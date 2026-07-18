@@ -18,8 +18,15 @@ portfolios-for-all/
 │   ├── bubblegum.css   # Candy pastels: playful, squishy, rounded
 │   ├── brutalist.css   # Neo-brutalism: yellow, thick borders, hard shadows
 │   └── velvet.css      # Old-money luxe: emerald, charcoal & gold serif
+├── docs/               # Landing page for THIS repo's own GitHub Pages site
+│   ├── index.html      # Redirects to the guide below
+│   └── portfolio-guide.html  # "What is this project?" guide page
 └── README.md
 ```
+
+> The `docs/` folder is only the project's own promo/landing page. You don't
+> need it for your portfolio — just publish `index.html` as described in
+> [step 4](#4-publish-with-github-pages).
 
 ## 1. Set up the repo
 
