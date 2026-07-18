@@ -34,7 +34,7 @@ portfolios-for-all/
 2. Clone your fork:
 
    ```bash
-   git clone https://github.com/<your-username>/portfolios-for-all.git
+   git clone https://github.com/ninadrathod/portfolios-for-all.git
    cd portfolios-for-all
    ```
 
