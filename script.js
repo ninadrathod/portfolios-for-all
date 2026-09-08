@@ -39,6 +39,14 @@ function hasText(value) {
   return typeof value === "string" && value.trim() !== "";
 }
 
+/** First non-empty string among aliases (canonical keys should be listed first). */
+function firstText(...values) {
+  for (const value of values) {
+    if (hasText(value)) return value.trim();
+  }
+  return "";
+}
+
 function hasItems(value) {
   return Array.isArray(value) && value.length > 0;
 }
@@ -129,6 +137,7 @@ function renderHero(data) {
 }
 
 function renderAbout(data) {
+  // Do not fall back to tagline: a one-line tagline is not a full about-me.
   if (!hasText(data.about)) return;
   document.getElementById("about").textContent = data.about;
   document.getElementById("about-section").hidden = false;
@@ -140,7 +149,10 @@ function renderEducation(entry) {
 
   const header = el("div", "card-header");
   header.appendChild(el("h3", "card-title", entry.institution || entry.degree));
-  const years = [entry.startYear, entry.endYear].filter(hasText).join(" - ");
+  const years = firstText(
+    [entry.startYear, entry.endYear].filter(hasText).join(" - "),
+    entry.years
+  );
   if (years) header.appendChild(el("span", "card-date", years));
   card.appendChild(header);
 
@@ -208,8 +220,10 @@ function renderProject(entry) {
   }
 
   const linksRow = el("div", "card-links");
-  if (hasText(entry.link)) linksRow.appendChild(link(entry.link, "Code", "card-link"));
-  if (hasText(entry.demo)) linksRow.appendChild(link(entry.demo, "Live Demo", "card-link"));
+  const codeHref = firstText(entry.link, entry.codeLink, entry.url);
+  const demoHref = firstText(entry.demo, entry.demoLink);
+  if (codeHref) linksRow.appendChild(link(codeHref, "Code", "card-link"));
+  if (demoHref) linksRow.appendChild(link(demoHref, "Live Demo", "card-link"));
   if (linksRow.children.length > 0) card.appendChild(linksRow);
   return card;
 }

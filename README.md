@@ -49,35 +49,42 @@ portfolios-for-all/
 
 ## 2. Update your data
 
-All content comes from two JSON files. The included dummy data shows the expected format — replace it with your own.
+All content comes from two JSON files. The included dummy data (Luna Vega) shows the **canonical** format — replace it with your own. JSON does not support comments, so field rules live here.
+
+CV tools that ingest a live GitHub Pages site (HTML plus same-origin `data.json` / `metadata.json`) expect the canonical names below. A few common aliases still render on the page.
 
 ### `data.json` — personal info
 
-Name, title, tagline, email, phone, location, LinkedIn, GitHub, personal website, resume link and an "about me" paragraph.
+Canonical fields: `name`, `email`, `location`, `about`, plus optional `title`, `tagline`, `phone`, `linkedin`, `github`, `website`, `resumeUrl`.
+
+**`about` is required for CV tools.** Write **2–4 sentences** (not a one-line tagline). `tagline` is a separate hero line and is **not** used as about-me if `about` is missing.
+
+Use real `https://…` URLs for LinkedIn / GitHub / website (or omit the field). Dummy `"#"` placeholders are only for the sample site.
 
 ```json
 {
   "name": "Your Name",
   "email": "you@example.com",
+  "location": "City, Country",
   "linkedin": "https://www.linkedin.com/in/your-profile",
   "github": "https://github.com/your-username",
-  ...
+  "about": "Two to four sentences about you. This is the summary CV tools extract — not the one-line tagline."
 }
 ```
 
 ### `metadata.json` — portfolio content
 
-Seven categories:
+Seven categories. Canonical field names:
 
-| Category | Notes |
-|---|---|
-| `education` | Institution, degree, years, score, details |
-| `workExperience` | `type` must be `"full-time"` or `"internship"`; `description` is a list of bullet points |
-| `certificates` | Name, issuer, date, optional URL |
-| `extracurricular` | Activity, organization, duration, description |
-| `positionsOfResponsibility` | Position, organization, duration, description |
-| `projects` | Name, description, technologies list, code link, optional demo link |
-| `skills` | A plain list of strings |
+| Category | Canonical fields | Notes |
+|---|---|---|
+| `education` | `institution`, `degree`, `startYear`, `endYear` | Dates also accept a single `years` string (e.g. `"2022 - 2026"`). `score` and `details` are optional. Degree + institution + dates are what CV tools need. |
+| `workExperience` | `company`, `role`, `location`, `startDate`, `endDate`, `description` | `description` is an array of bullet strings (≥1). `type` is `"full-time"` or `"internship"`. Leave the array empty if you have no jobs yet. |
+| `projects` | `name`, `description`, `technologies`, `link`, `demo` | At least **two** projects with a `name`. Code URL aliases: `link` **or** `codeLink` **or** `url`. Demo aliases: `demo` **or** `demoLink`. Use `https://…` or omit; dummy `"#"` is sample-only. |
+| `skills` | array of strings | Skill **names only** — no proficiency labels like `"Python: expert"`. |
+| `certificates` | `name`, `issuer`, `date`, `url` | Optional. |
+| `extracurricular` | `activity`, `organization`, `duration`, `description` | Optional. |
+| `positionsOfResponsibility` | `position`, `organization`, `duration`, `description` | Optional. |
 
 **Missing data is fine.** If a category doesn't apply to you (e.g. no work experience yet), leave it as an empty array `[]` or remove it entirely — that section simply won't appear on the page. Optional fields inside an entry (like a certificate URL) can be left as `""` and will be skipped.
 
