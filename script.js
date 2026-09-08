@@ -124,7 +124,6 @@ function renderHero(data) {
     { label: "Email", href: hasText(data.email) ? `mailto:${data.email}` : "" },
     { label: "LinkedIn", href: data.linkedin },
     { label: "GitHub", href: data.github },
-    { label: "Website", href: data.website },
     { label: "Resume", href: data.resumeUrl },
   ];
   entries.forEach(({ label, href }) => {

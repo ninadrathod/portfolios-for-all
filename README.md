@@ -55,11 +55,11 @@ CV tools that ingest a live GitHub Pages site (HTML plus same-origin `data.json`
 
 ### `data.json` — personal info
 
-Canonical fields: `name`, `email`, `location`, `about`, plus optional `title`, `tagline`, `phone`, `linkedin`, `github`, `website`, `resumeUrl`.
+Canonical fields: `name`, `email`, `location`, `about`, plus optional `title`, `tagline`, `phone`, `linkedin`, `github`, `resumeUrl`.
 
 **`about` is required for CV tools.** Write **2–4 sentences** (not a one-line tagline). `tagline` is a separate hero line and is **not** used as about-me if `about` is missing.
 
-Use real `https://…` URLs for LinkedIn / GitHub / website (or omit the field). Dummy `"#"` placeholders are only for the sample site.
+Use real `https://…` URLs for LinkedIn / GitHub (or omit the field). Dummy `"#"` placeholders are only for the sample site.
 
 ```json
 {
