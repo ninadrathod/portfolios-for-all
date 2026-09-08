@@ -12,12 +12,17 @@ portfolios-for-all/
 ├── script.js         # Reads the JSON files and renders the page
 ├── data.json         # Your personal info (name, email, links, about)
 ├── metadata.json     # Your portfolio content (education, work, projects, ...)
-├── styling/            # 5 theme stylesheets — link any ONE in index.html
+├── styling/            # 10 theme stylesheets — link any ONE in index.html
 │   ├── aurora.css      # Northern lights: drifting gradients & glass cards
 │   ├── cyberpunk.css   # Neon-noir: pink/cyan glow on a dark grid
 │   ├── bubblegum.css   # Candy pastels: playful, squishy, rounded
 │   ├── brutalist.css   # Neo-brutalism: yellow, thick borders, hard shadows
-│   └── velvet.css      # Old-money luxe: emerald, charcoal & gold serif
+│   ├── velvet.css      # Old-money luxe: emerald, charcoal & gold serif
+│   ├── newsprint.css   # Broadsheet: cream stock, serif headlines, press red
+│   ├── terminal.css    # Amber CRT: monospace, scanlines, blinking cursor
+│   ├── blueprint.css   # Drafting board: cyanotype blue, dashed frames
+│   ├── swiss.css       # Typographic: white space, numbered grid, signal red
+│   └── terrarium.css   # Greenhouse: moss & sage on warm paper
 ├── docs/               # Landing page for THIS repo's own GitHub Pages site
 │   ├── index.html      # Redirects to the guide below
 │   └── portfolio-guide.html  # "What is this project?" guide page
@@ -100,6 +105,11 @@ Open `index.html` and find the theme selection block near the top. Keep exactly 
 <!-- <link rel="stylesheet" href="styling/bubblegum.css" /> -->
 <!-- <link rel="stylesheet" href="styling/brutalist.css" /> -->
 <!-- <link rel="stylesheet" href="styling/velvet.css" /> -->
+<!-- <link rel="stylesheet" href="styling/newsprint.css" /> -->
+<!-- <link rel="stylesheet" href="styling/terminal.css" /> -->
+<!-- <link rel="stylesheet" href="styling/blueprint.css" /> -->
+<!-- <link rel="stylesheet" href="styling/swiss.css" /> -->
+<!-- <link rel="stylesheet" href="styling/terrarium.css" /> -->
 ```
 
 To switch themes, comment out the current one and uncomment the one you want. For example, to use the cyberpunk theme:
@@ -116,6 +126,11 @@ To switch themes, comment out the current one and uncomment the one you want. Fo
 | `bubblegum.css` | Candy pastels — squishy rounded cards, sprinkle-dot hero, rotating pill colours |
 | `brutalist.css` | Neo-brutalism — electric yellow, thick black borders, hard offset shadows |
 | `velvet.css` | Old-money luxe — emerald & charcoal with gilded gold serif type |
+| `newsprint.css` | Broadsheet paper — cream stock, drop cap, hairline column rules, press red |
+| `terminal.css` | Amber CRT — monospace throughout, scanlines, blinking block cursor |
+| `blueprint.css` | Drafting board — cyanotype blue, dashed frames, crop marks, pencil-yellow labels |
+| `swiss.css` | International typographic — white space, numbered grid, oversized tight type |
+| `terrarium.css` | Greenhouse botanicals — moss & sage on warm paper, leaf-cut cards |
 
 Each theme pulls a matching font pair from Google Fonts (with safe fallbacks), so no font installation is needed.
 

@@ -1,0 +1,469 @@
+/* ==========================================================================
+   Theme: Newsprint
+   Broadsheet morning paper — cream stock, condensed serif headlines,
+   hairline column rules and a single spot of press red.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;500;600&display=swap");
+
+:root {
+  --paper: #f4f0e6;
+  --stock: #fbf9f3;
+  --ink: #17140f;
+  --muted: #5e564a;
+  --rule: #c8bfad;
+  --press-red: #a4212b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: "Libre Baskerville", Georgia, "Times New Roman", serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* faint fibre texture of cheap paper stock */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(23, 20, 15, 0.022) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(23, 20, 15, 0.018) 0 1px, transparent 1px 4px);
+}
+
+#loading-message,
+#error-message {
+  max-width: 640px;
+  margin: 5rem auto;
+  padding: 1.5rem;
+  text-align: center;
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+#portfolio {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3.5rem;
+}
+
+/* ---------- masthead ---------- */
+
+#hero {
+  text-align: center;
+  padding: 3.2rem 0 2rem;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 2.6rem;
+}
+
+#hero h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.8rem, 9vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 0.7rem 0 0.85rem;
+}
+
+.subtitle {
+  margin-top: 0.85rem;
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: var(--press-red);
+}
+
+.tagline {
+  margin-top: 0.55rem;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.contact-links {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem 1.4rem;
+}
+
+.contact-link {
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+a.contact-link:hover {
+  color: var(--press-red);
+  border-bottom-color: var(--press-red);
+}
+
+.contact-link.location {
+  color: var(--muted);
+  border-bottom-color: transparent;
+  font-style: normal;
+}
+
+/* ---------- sections ---------- */
+
+section {
+  margin-bottom: 3rem;
+}
+
+section h2 {
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+section h2::after {
+  content: "";
+  flex: 1;
+  height: 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-top: 3px;
+}
+
+/* lede paragraph gets the drop cap */
+#about {
+  font-size: 1.04rem;
+  column-gap: 2.4rem;
+}
+
+#about::first-letter {
+  float: left;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 3.7rem;
+  font-weight: 900;
+  line-height: 0.82;
+  margin: 0.16rem 0.55rem 0 0;
+  color: var(--press-red);
+}
+
+/* ---------- cards: stacked like column items ---------- */
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0 2.2rem;
+}
+
+.card {
+  border-top: 1px solid var(--rule);
+  padding: 1.15rem 0 1.25rem;
+  transition: background 0.2s;
+}
+
+.card:first-child {
+  border-top: 2px solid var(--ink);
+}
+
+.card:hover {
+  background: var(--stock);
+}
+
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.8rem;
+}
+
+.card-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.card-title a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--press-red);
+}
+
+.card-title a:hover {
+  color: var(--press-red);
+}
+
+.card-date {
+  margin-left: auto;
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--press-red);
+  white-space: nowrap;
+}
+
+.card-subtitle {
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+.card-meta {
+  font-size: 0.86rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.card-text {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.card-bullets {
+  margin-top: 0.6rem;
+  padding-left: 1.15rem;
+  font-size: 0.95rem;
+}
+
+.card-bullets li {
+  margin-bottom: 0.35rem;
+}
+
+.card-bullets li::marker {
+  content: "— ";
+  color: var(--press-red);
+}
+
+.badge {
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  font-size: 0.66rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 0.18rem 0.55rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.badge-full-time {
+  background: var(--press-red);
+}
+
+/* ---------- projects ---------- */
+
+.project-card {
+  padding: 1.4rem 0 1.6rem;
+}
+
+.project-card .card-text {
+  line-height: 1.75;
+  max-width: 62rem;
+}
+
+.project-card .card-text + .card-text {
+  margin-top: 0.75rem;
+}
+
+.tag-list {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.55rem;
+}
+
+.tag {
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  padding: 0.12rem 0.5rem;
+}
+
+.card-links {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+}
+
+.card-link {
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--press-red);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1px;
+}
+
+.card-link::after {
+  content: " ›";
+}
+
+.card-link:hover {
+  border-bottom-color: var(--press-red);
+}
+
+/* ---------- skills: classifieds strip ---------- */
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding: 0.9rem 0;
+}
+
+.skill {
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--stock);
+  border: 1px solid var(--rule);
+  padding: 0.32rem 0.75rem;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.skill:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+/* ---------- footer ---------- */
+
+#footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.6rem;
+  border-top: 3px double var(--ink);
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+/* ---------- responsive: tablet ---------- */
+
+@media (max-width: 900px) {
+  #portfolio {
+    max-width: 720px;
+  }
+
+  #hero {
+    padding: 2.6rem 0 1.7rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+}
+
+/* ---------- responsive: phone ---------- */
+
+@media (max-width: 600px) {
+  body {
+    line-height: 1.65;
+  }
+
+  #portfolio {
+    padding: 0 1.1rem 2.5rem;
+  }
+
+  #hero {
+    padding: 2.1rem 0 1.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .subtitle {
+    letter-spacing: 0.2em;
+    font-size: 0.84rem;
+  }
+
+  .tagline {
+    font-size: 0.92rem;
+  }
+
+  .contact-links {
+    gap: 0.35rem 1rem;
+  }
+
+  section h2 {
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+  }
+
+  #about::first-letter {
+    font-size: 3rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-date {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .skill {
+    font-size: 0.74rem;
+    padding: 0.28rem 0.6rem;
+  }
+}

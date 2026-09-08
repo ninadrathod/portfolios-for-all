@@ -1,0 +1,439 @@
+/* ==========================================================================
+   Theme: Terrarium
+   Greenhouse botanicals — warm paper, moss and sage, terracotta accents
+   and leaf-shaped cards with soft asymmetric corners.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap");
+
+:root {
+  --paper: #f5f2e8;
+  --surface: #fffdf7;
+  --text: #26302a;
+  --muted: #6d7c6f;
+  --moss: #2f5d3a;
+  --leaf: #5b8c51;
+  --sage: #dfe7d8;
+  --terracotta: #c1694f;
+  --border: #d5ddcb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: "Karla", "Segoe UI", system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* seed-speck texture on handmade paper */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(47, 93, 58, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+#loading-message,
+#error-message {
+  max-width: 640px;
+  margin: 5rem auto;
+  padding: 1.5rem;
+  text-align: center;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+#portfolio {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3.5rem;
+}
+
+/* ---------- hero ---------- */
+
+#hero {
+  text-align: center;
+  padding: 4.5rem 1rem 2.6rem;
+}
+
+#hero h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.5rem, 8vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.08;
+  color: var(--moss);
+}
+
+.subtitle {
+  margin-top: 0.6rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--leaf);
+}
+
+.tagline {
+  margin-top: 0.6rem;
+  font-size: 0.98rem;
+  color: var(--muted);
+}
+
+#hero::after {
+  content: "\2767";
+  display: block;
+  margin-top: 1.4rem;
+  font-size: 1.5rem;
+  color: var(--leaf);
+}
+
+.contact-links {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.contact-link {
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--moss);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px 5px 16px 5px;
+  padding: 0.42rem 1.05rem;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+a.contact-link:hover {
+  background: var(--moss);
+  border-color: var(--moss);
+  color: var(--surface);
+}
+
+.contact-link.location {
+  color: var(--muted);
+  background: transparent;
+  border-style: dashed;
+}
+
+/* ---------- sections ---------- */
+
+section {
+  margin-bottom: 3rem;
+}
+
+section h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--moss);
+  border-left: 4px solid var(--leaf);
+  border-radius: 0 0 0 4px;
+  padding-left: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+#about {
+  font-size: 1.02rem;
+  max-width: 64rem;
+}
+
+/* ---------- cards ---------- */
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(262px, 1fr));
+  gap: 1.1rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px 6px 22px 6px;
+  padding: 1.35rem 1.5rem;
+  box-shadow: 0 2px 0 rgba(47, 93, 58, 0.06);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--leaf);
+  box-shadow: 0 10px 24px rgba(47, 93, 58, 0.12);
+}
+
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.85rem;
+}
+
+.card-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.22rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.card-title a {
+  color: var(--moss);
+  text-decoration: none;
+  border-bottom: 2px solid var(--sage);
+}
+
+.card-title a:hover {
+  border-bottom-color: var(--leaf);
+}
+
+.card-date {
+  margin-left: auto;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--terracotta);
+  white-space: nowrap;
+}
+
+.card-subtitle {
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--leaf);
+  margin-top: 0.2rem;
+}
+
+.card-meta {
+  font-size: 0.87rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.card-text {
+  margin-top: 0.6rem;
+  font-size: 0.96rem;
+}
+
+.card-bullets {
+  margin-top: 0.6rem;
+  padding-left: 1.3rem;
+  font-size: 0.96rem;
+}
+
+.card-bullets li {
+  margin-bottom: 0.35rem;
+}
+
+.card-bullets li::marker {
+  content: "\2767  ";
+  color: var(--leaf);
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: var(--sage);
+  color: var(--moss);
+}
+
+.badge-full-time {
+  background: var(--terracotta);
+  color: var(--surface);
+}
+
+/* ---------- projects ---------- */
+
+.project-card {
+  padding: 1.55rem 1.7rem 1.6rem;
+}
+
+.project-card .card-text {
+  line-height: 1.75;
+  max-width: 62rem;
+}
+
+.project-card .card-text + .card-text {
+  margin-top: 0.7rem;
+}
+
+.tag-list {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--moss);
+  background: var(--sage);
+  border-radius: 12px 4px 12px 4px;
+  padding: 0.2rem 0.7rem;
+}
+
+.card-links {
+  margin-top: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.3rem;
+}
+
+.card-link {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--terracotta);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.card-link::after {
+  content: " \2192";
+}
+
+.card-link:hover {
+  border-bottom-color: var(--terracotta);
+}
+
+/* ---------- skills ---------- */
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.skill {
+  font-size: 0.87rem;
+  font-weight: 500;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px 5px 16px 5px;
+  padding: 0.35rem 0.85rem;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.skill:hover {
+  background: var(--sage);
+  border-color: var(--leaf);
+  color: var(--moss);
+}
+
+/* ---------- footer ---------- */
+
+#footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.8rem;
+  border-top: 1px dashed var(--border);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+#footer::before {
+  content: "\2767";
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--leaf);
+}
+
+/* ---------- responsive: tablet ---------- */
+
+@media (max-width: 900px) {
+  #portfolio {
+    max-width: 700px;
+  }
+
+  #hero {
+    padding: 3.4rem 1rem 2.2rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+}
+
+/* ---------- responsive: phone ---------- */
+
+@media (max-width: 600px) {
+  #portfolio {
+    padding: 0 1.1rem 2.5rem;
+  }
+
+  #hero {
+    padding: 2.6rem 0.5rem 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+  }
+
+  .tagline {
+    font-size: 0.92rem;
+  }
+
+  .contact-link {
+    font-size: 0.8rem;
+    padding: 0.38rem 0.9rem;
+  }
+
+  section h2 {
+    font-size: 1.28rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.15rem 1.2rem;
+    border-radius: 18px 5px 18px 5px;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-date {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .skill {
+    font-size: 0.81rem;
+    padding: 0.3rem 0.7rem;
+  }
+}

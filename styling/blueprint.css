@@ -1,0 +1,496 @@
+/* ==========================================================================
+   Theme: Blueprint
+   Drafting board — cyanotype blue sheet, white technical linework,
+   dashed frames with crop marks and pencil-yellow dimension labels.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+:root {
+  --sheet: #123a5e;
+  --deep: #0e2f4c;
+  --ink: #eef5fb;
+  --muted: #a3c1db;
+  --line: rgba(238, 245, 251, 0.24);
+  --line-strong: rgba(238, 245, 251, 0.55);
+  --pencil: #ffcf5c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  background: var(--sheet);
+  color: var(--ink);
+  line-height: 1.68;
+  min-height: 100vh;
+}
+
+/* fine grid + coarse grid, like drafting paper */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(238, 245, 251, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 245, 251, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(238, 245, 251, 0.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 245, 251, 0.13) 1px, transparent 1px);
+  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+}
+
+#loading-message,
+#error-message {
+  max-width: 640px;
+  margin: 5rem auto;
+  padding: 1.5rem;
+  text-align: center;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+}
+
+#portfolio {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3.5rem;
+}
+
+/* ---------- hero: title block ---------- */
+
+#hero {
+  position: relative;
+  margin-top: 2.6rem;
+  margin-bottom: 2.8rem;
+  padding: 2.4rem 1.8rem 2rem;
+  border: 1px solid var(--line-strong);
+  background: rgba(14, 47, 76, 0.55);
+}
+
+/* crop marks on opposite corners */
+#hero::before,
+#hero::after {
+  content: "+";
+  position: absolute;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9rem;
+  color: var(--pencil);
+  line-height: 1;
+}
+
+#hero::before {
+  top: -0.45rem;
+  left: -0.45rem;
+}
+
+#hero::after {
+  bottom: -0.45rem;
+  right: -0.45rem;
+}
+
+#hero h1 {
+  font-size: clamp(2.2rem, 7vw, 3.8rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin-top: 0.7rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--pencil);
+}
+
+.tagline {
+  margin-top: 0.75rem;
+  max-width: 46rem;
+  font-size: 0.96rem;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 0.8rem;
+}
+
+.contact-links {
+  margin-top: 1.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.contact-link {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px dashed var(--line-strong);
+  padding: 0.35rem 0.85rem;
+  transition: border-style 0.15s, border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+a.contact-link:hover {
+  border-style: solid;
+  border-color: var(--pencil);
+  color: var(--pencil);
+  background: rgba(255, 207, 92, 0.08);
+}
+
+.contact-link.location {
+  color: var(--muted);
+  border-color: var(--line);
+}
+
+/* ---------- sections ---------- */
+
+section {
+  margin-bottom: 3rem;
+}
+
+section h2 {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--pencil);
+  margin-bottom: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+section h2::before {
+  content: "\25A2";
+  font-size: 1rem;
+  color: var(--line-strong);
+}
+
+section h2::after {
+  content: "";
+  flex: 1;
+  border-top: 1px dashed var(--line);
+}
+
+#about {
+  max-width: 62rem;
+  font-size: 0.97rem;
+}
+
+/* ---------- cards: drawing frames ---------- */
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(262px, 1fr));
+  gap: 1.15rem;
+}
+
+.card {
+  position: relative;
+  background: rgba(14, 47, 76, 0.5);
+  border: 1px dashed var(--line-strong);
+  padding: 1.3rem 1.45rem;
+  transition: border-color 0.18s, background 0.18s;
+}
+
+.card::before,
+.card::after {
+  content: "+";
+  position: absolute;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: var(--line-strong);
+}
+
+.card::before {
+  top: 0.3rem;
+  left: 0.35rem;
+}
+
+.card::after {
+  bottom: 0.3rem;
+  right: 0.35rem;
+}
+
+.card:hover {
+  border-color: var(--pencil);
+  background: rgba(14, 47, 76, 0.75);
+}
+
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.85rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.card-title a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--pencil);
+}
+
+.card-title a:hover {
+  color: var(--pencil);
+}
+
+.card-date {
+  margin-left: auto;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--pencil);
+  white-space: nowrap;
+}
+
+.card-subtitle {
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.card-meta {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.card-text {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.card-bullets {
+  margin-top: 0.6rem;
+  padding-left: 1.3rem;
+  font-size: 0.95rem;
+}
+
+.card-bullets li {
+  margin-bottom: 0.32rem;
+}
+
+.card-bullets li::marker {
+  content: "\2014  ";
+  color: var(--pencil);
+}
+
+.badge {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.14rem 0.5rem;
+  border: 1px dashed var(--line-strong);
+  color: var(--ink);
+}
+
+.badge-full-time {
+  border-style: solid;
+  border-color: var(--pencil);
+  color: var(--pencil);
+}
+
+/* ---------- projects ---------- */
+
+.project-card {
+  padding: 1.5rem 1.6rem 1.55rem;
+}
+
+.project-card .card-text {
+  line-height: 1.75;
+  max-width: 62rem;
+}
+
+.project-card .card-text + .card-text {
+  margin-top: 0.7rem;
+}
+
+.tag-list {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.73rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  border-bottom: 1px dashed var(--line-strong);
+  padding: 0 0.15rem 0.1rem;
+}
+
+.card-links {
+  margin-top: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+}
+
+.card-link {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pencil);
+  text-decoration: none;
+}
+
+.card-link::before {
+  content: "\2192  ";
+}
+
+.card-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- skills ---------- */
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.skill {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.79rem;
+  color: var(--ink);
+  border: 1px dashed var(--line);
+  padding: 0.3rem 0.75rem;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.skill:hover {
+  border-style: solid;
+  border-color: var(--pencil);
+  color: var(--pencil);
+}
+
+/* ---------- footer ---------- */
+
+#footer {
+  margin-top: 3rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--line-strong);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- responsive: tablet ---------- */
+
+@media (max-width: 900px) {
+  #portfolio {
+    max-width: 720px;
+  }
+
+  #hero {
+    padding: 2rem 1.4rem 1.7rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+}
+
+/* ---------- responsive: phone ---------- */
+
+@media (max-width: 600px) {
+  #portfolio {
+    padding: 0 1rem 2.5rem;
+  }
+
+  #hero {
+    margin-top: 1.8rem;
+    padding: 1.6rem 1.1rem 1.4rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+  }
+
+  .tagline {
+    font-size: 0.9rem;
+  }
+
+  .contact-link {
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
+  }
+
+  section h2 {
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.1rem 1.15rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-date {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .skill {
+    font-size: 0.74rem;
+    padding: 0.26rem 0.6rem;
+  }
+
+  /* tighter drafting grid on small screens */
+  body::before {
+    background-size: 14px 14px, 14px 14px, 70px 70px, 70px 70px;
+  }
+}

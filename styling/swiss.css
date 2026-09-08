@@ -1,0 +1,428 @@
+/* ==========================================================================
+   Theme: Swiss
+   International typographic style — white space, a hard left grid,
+   oversized tight-tracked type and one signal red.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+:root {
+  --paper: #ffffff;
+  --ink: #0a0a0a;
+  --muted: #6d6d6d;
+  --rule: #dcdcdc;
+  --wash: #f4f4f4;
+  --signal: #e2231a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#loading-message,
+#error-message {
+  max-width: 640px;
+  margin: 5rem auto;
+  padding: 1.5rem;
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  border-top: 2px solid var(--ink);
+}
+
+#portfolio {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+/* ---------- hero ---------- */
+
+#hero {
+  padding: 5rem 0 2.4rem;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 3.2rem;
+}
+
+#hero h1 {
+  font-size: clamp(2.9rem, 11vw, 6.4rem);
+  font-weight: 900;
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+}
+
+.subtitle {
+  margin-top: 1.4rem;
+  font-size: clamp(1.1rem, 2.6vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  max-width: 34ch;
+}
+
+.tagline {
+  margin-top: 0.55rem;
+  font-size: 0.98rem;
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+.contact-links {
+  margin-top: 2.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 2rem;
+}
+
+.contact-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  color: var(--ink);
+  transition: color 0.15s;
+}
+
+a.contact-link::after {
+  content: " \2197";
+  color: var(--signal);
+}
+
+a.contact-link:hover {
+  color: var(--signal);
+}
+
+.contact-link.location {
+  color: var(--muted);
+}
+
+/* ---------- sections: numbered grid ---------- */
+
+main {
+  counter-reset: section;
+}
+
+section {
+  counter-increment: section;
+  margin-bottom: 3.4rem;
+}
+
+section h2 {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  align-items: start;
+  gap: 0 0.5rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 1.4rem;
+}
+
+section h2::before {
+  content: counter(section, decimal-leading-zero);
+  color: var(--signal);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+#about {
+  font-size: 1.06rem;
+  line-height: 1.65;
+  max-width: 66ch;
+  margin-left: 5rem;
+}
+
+/* ---------- cards ---------- */
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0 2.5rem;
+}
+
+.card {
+  padding: 1.3rem 0 1.5rem 5rem;
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.15s;
+}
+
+.card:hover {
+  background: var(--wash);
+}
+
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.9rem;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.card-title a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--signal);
+}
+
+.card-title a:hover {
+  color: var(--signal);
+}
+
+.card-date {
+  margin-left: auto;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.card-subtitle {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.card-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.card-text {
+  margin-top: 0.65rem;
+  font-size: 0.96rem;
+  max-width: 70ch;
+}
+
+.card-bullets {
+  margin-top: 0.65rem;
+  padding-left: 1.1rem;
+  font-size: 0.96rem;
+  max-width: 70ch;
+}
+
+.card-bullets li {
+  margin-bottom: 0.32rem;
+}
+
+.card-bullets li::marker {
+  content: "\2014  ";
+  color: var(--signal);
+}
+
+.badge {
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.2rem 0.5rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.badge-full-time {
+  background: var(--signal);
+}
+
+/* ---------- projects ---------- */
+
+.project-card {
+  padding: 1.6rem 0 1.9rem 5rem;
+}
+
+.project-card .card-text {
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+.project-card .card-text + .card-text {
+  margin-top: 0.7rem;
+}
+
+.tag-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.5rem;
+}
+
+.tag {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.tag:not(:last-child)::after {
+  content: " /";
+  color: var(--rule);
+}
+
+.card-links {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.card-link {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.card-link:hover {
+  color: var(--signal);
+  border-bottom-color: var(--signal);
+}
+
+/* ---------- skills ---------- */
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.6rem;
+  margin-left: 5rem;
+}
+
+.skill {
+  font-size: 0.92rem;
+  font-weight: 500;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 0.15rem;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.skill:hover {
+  color: var(--signal);
+  border-bottom-color: var(--signal);
+}
+
+/* ---------- footer ---------- */
+
+#footer {
+  margin-top: 3.5rem;
+  padding-top: 1.2rem;
+  border-top: 2px solid var(--ink);
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+/* ---------- responsive: tablet ---------- */
+
+@media (max-width: 900px) {
+  #portfolio {
+    max-width: 760px;
+    padding: 0 1.6rem 3.2rem;
+  }
+
+  #hero {
+    padding: 3.6rem 0 2rem;
+    margin-bottom: 2.6rem;
+  }
+
+  section {
+    margin-bottom: 2.8rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+/* ---------- responsive: phone ---------- */
+
+@media (max-width: 600px) {
+  #portfolio {
+    padding: 0 1.1rem 2.6rem;
+  }
+
+  #hero {
+    padding: 2.8rem 0 1.7rem;
+  }
+
+  .subtitle {
+    margin-top: 1rem;
+  }
+
+  .contact-links {
+    gap: 0.35rem 1.2rem;
+  }
+
+  section h2 {
+    grid-template-columns: 2.6rem 1fr;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* drop the wide left column so text keeps its measure */
+  #about,
+  .skills-list {
+    margin-left: 0;
+  }
+
+  .card,
+  .project-card {
+    padding-left: 0;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-title {
+    font-size: 1.12rem;
+  }
+
+  .card-date {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .skill {
+    font-size: 0.85rem;
+  }
+}
