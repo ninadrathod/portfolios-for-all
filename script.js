@@ -26,7 +26,7 @@ async function init() {
 }
 
 async function fetchJson(path) {
-  const response = await fetch(path);
+  const response = await fetch(path, { cache: "no-store" });
   if (!response.ok) {
     throw new Error(`Failed to fetch ${path}: HTTP ${response.status}`);
   }
@@ -203,12 +203,29 @@ function formatWorkType(type) {
   return type;
 }
 
+function appendParagraphs(parent, value) {
+  const parts = hasItems(value)
+    ? value.filter(hasText)
+    : hasText(value)
+      ? value.split(/\n\s*\n/).map((part) => part.trim()).filter(Boolean)
+      : [];
+  parts.forEach((text) => parent.appendChild(el("p", "card-text", text)));
+}
+
 function renderProject(entry) {
   if (!hasText(entry.name)) return null;
   const card = el("article", "card project-card");
 
   card.appendChild(el("h3", "card-title", entry.name));
-  if (hasText(entry.description)) card.appendChild(el("p", "card-text", entry.description));
+  appendParagraphs(card, entry.description);
+
+  if (hasItems(entry.highlights)) {
+    const ul = el("ul", "card-bullets");
+    entry.highlights.filter(hasText).forEach((point) => {
+      ul.appendChild(el("li", "", point));
+    });
+    if (ul.children.length > 0) card.appendChild(ul);
+  }
 
   if (hasItems(entry.technologies)) {
     const tags = el("div", "tag-list");
@@ -224,6 +241,7 @@ function renderProject(entry) {
   if (codeHref) linksRow.appendChild(link(codeHref, "Code", "card-link"));
   if (demoHref) linksRow.appendChild(link(demoHref, "Live Demo", "card-link"));
   if (linksRow.children.length > 0) card.appendChild(linksRow);
+
   return card;
 }
 

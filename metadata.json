@@ -101,7 +101,15 @@
   "projects": [
     {
       "name": "MoodMuse",
-      "description": "A journaling web app that turns your daily mood entries into generative art and gentle weekly insights. 1.2k registered users.",
+      "description": [
+        "A journaling web app that turns daily mood check-ins into generative canvas art and a calm weekly recap. I built it after noticing most mood trackers felt like spreadsheets — people would log a number, close the tab, and never look back.",
+        "Entries are stored as structured notes rather than a single score. A small Node API scores language for valence, then the frontend maps that into color, motion, and density so each week produces a unique piece of art. Insights are written in plain language (\"you slept better on days you went outside\") instead of charts nobody reads."
+      ],
+      "highlights": [
+        "1.2k registered users in the first semester, with about 40% returning the following week.",
+        "Canvas renderer keeps a 60fps animation on mid-range laptops by batching draws and pausing off-screen tabs.",
+        "Weekly email digest is optional and can be turned off in one tap — no dark patterns."
+      ],
       "technologies": [
         "JavaScript",
         "Canvas API",
@@ -113,7 +121,15 @@
     },
     {
       "name": "OrbitDesk",
-      "description": "A keyboard-first task manager for people who hate task managers. Offline-first with seamless sync and a command palette.",
+      "description": [
+        "A keyboard-first task manager for people who bounce off most to-do apps. Everything lives behind a command palette: capture a task, snooze it, or jump to a project without touching the mouse.",
+        "The app is offline-first. Tasks live in IndexedDB and a service worker keeps a local copy of the UI, so it still works on a train with no signal. When the network returns, a last-write-wins sync with conflict notes keeps two devices from silently dropping work."
+      ],
+      "highlights": [
+        "Command palette handles create, search, reschedule, and tag in under 200ms on a cold start.",
+        "Sync recovers after going offline for a weekend; conflicts surface as a short note instead of a merge UI.",
+        "Shipped without accounts for the first month so classmates could try it from a static host."
+      ],
       "technologies": [
         "TypeScript",
         "IndexedDB",
@@ -124,7 +140,15 @@
     },
     {
       "name": "SnackTrack",
-      "description": "Campus food-truck tracker with live locations, menus and crowd levels. Won 'Best Campus Hack' at Hack the Aurora 2024.",
+      "description": [
+        "A campus food-truck tracker with live locations, today's menus, and a rough crowd meter so you do not walk across quad for a truck that already left. Built with two friends for Hack the Aurora 2024.",
+        "Vendors drop a pin from a phone and update a short menu; students see trucks on a Leaflet map with filters for cuisine and dietary tags. Crowd level is a three-step estimate from check-ins in the last 20 minutes, not a fake heatmap."
+      ],
+      "highlights": [
+        "Won Best Campus Hack; student government asked us to keep it running through finals week.",
+        "Map stays usable on a 4G phone: tiles are cached and the live layer is a handful of GeoJSON points.",
+        "Vendors can post a menu in under a minute without creating a separate dashboard account."
+      ],
       "technologies": [
         "React",
         "Leaflet",
