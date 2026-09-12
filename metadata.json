@@ -25,7 +25,8 @@
       "startDate": "May 2025",
       "endDate": "Aug 2025",
       "location": "Nebula City (Hybrid)",
-      "description": [
+      "role_summary": "As a Software Engineering Intern, I worked on the studio's collaborative design tool used by thousands of designers each week. My focus was shipping user-facing features, improving canvas performance, and sharing what I learned through internal talks that helped new engineers ramp up faster.",
+      "highlights": [
         "Shipped a real-time collaboration feature for the studio's design tool, used by 12k designers weekly.",
         "Cut initial canvas load time by 40% through asset streaming and smarter caching.",
         "Presented an internal talk on WebSocket scaling that became onboarding material."
@@ -38,7 +39,8 @@
       "startDate": "Sep 2024",
       "endDate": "Apr 2025",
       "location": "Remote",
-      "description": [
+      "role_summary": "As a Junior Developer, I helped maintain production notification systems that deliver millions of emails and push messages each month. I focused on service reliability, safer microservice integrations, and catching regressions early so releases reached customers with fewer surprises and less downtime.",
+      "highlights": [
         "Maintained the customer notification service handling 2M+ emails and pushes per month.",
         "Introduced contract tests between microservices, catching 15+ integration bugs before release."
       ]

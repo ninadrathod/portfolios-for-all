@@ -84,7 +84,7 @@ Seven categories. Canonical field names:
 | Category | Canonical fields | Notes |
 |---|---|---|
 | `education` | `institution`, `degree`, `startYear`, `endYear` | Dates also accept a single `years` string (e.g. `"2022 - 2026"`). `score` and `details` are optional. Degree + institution + dates are what CV tools need. |
-| `workExperience` | `company`, `role`, `location`, `startDate`, `endDate`, `description` | `description` is an array of bullet strings (≥1). `type` is `"full-time"` or `"internship"`. Leave the array empty if you have no jobs yet. |
+| `workExperience` | `company`, `role`, `location`, `startDate`, `endDate`, `role_summary`, `highlights` | `role_summary` is a short paragraph (about 40–50 words) covering the role and responsibilities. `highlights` is an array of bullet strings for recurring tasks and completed projects (≥1). `type` is `"full-time"` or `"internship"`. Leave the array empty if you have no jobs yet. |
 | `projects` | `name`, `description`, `technologies`, `link`, `demo` | At least **two** projects with a `name`. `description` is a string **or** an array of paragraphs (write 2–4 sentences, not a one-liner). Optional `highlights` is an array of impact bullets. Code URL aliases: `link` **or** `codeLink` **or** `url`. Demo aliases: `demo` **or** `demoLink`. Use `https://…` or omit; dummy `"#"` is sample-only. |
 | `skills` | array of strings | Skill **names only** — no proficiency labels like `"Python: expert"`. |
 | `certificates` | `name`, `issuer`, `date`, `url` | Optional. |

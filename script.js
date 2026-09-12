@@ -184,13 +184,24 @@ function renderWork(entry) {
   ].filter(hasText).join(" | ");
   if (subtitle) card.appendChild(el("p", "card-subtitle", subtitle));
 
-  if (hasItems(entry.description)) {
+  if (hasText(entry.role_summary)) {
+    card.appendChild(el("p", "card-text", entry.role_summary));
+  }
+
+  // Prefer highlights (tasks/projects). Fall back to legacy description arrays.
+  const bullets = hasItems(entry.highlights)
+    ? entry.highlights
+    : hasItems(entry.description)
+      ? entry.description
+      : null;
+
+  if (bullets) {
     const ul = el("ul", "card-bullets");
-    entry.description.filter(hasText).forEach((point) => {
+    bullets.filter(hasText).forEach((point) => {
       ul.appendChild(el("li", "", point));
     });
     if (ul.children.length > 0) card.appendChild(ul);
-  } else if (hasText(entry.description)) {
+  } else if (!hasText(entry.role_summary) && hasText(entry.description)) {
     card.appendChild(el("p", "card-text", entry.description));
   }
   return card;
